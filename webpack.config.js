@@ -28,16 +28,6 @@ switch (CONFIG) {
         break;
 
     case "prod":
-        plugins.push(new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            compress : {
-                dead_code : true,
-                unused : true,
-                // Hide the dead code warnings. The defines intentionally create
-                // dead code paths.
-                warnings  : false,
-            }
-        }));
         plugins.push(new webpack.optimize.DedupePlugin());
         break;
 
@@ -67,7 +57,7 @@ switch (PLATFORM) {
         bundleSuffix = (CONFIG == 'debug') ? '' : '.min';
         defines.PLATFORM_BROWSER = true;
         target = "web";
-        libraryTarget = "umd";
+        libraryTarget = "var";
         break;
 
     default:
@@ -105,6 +95,7 @@ module.exports = {
                     presets : [ ],
                     plugins : [
                         "add-module-exports",
+                        'babel-plugin-transform-dead-code-elimination',
 
                         // Manually specify the *subset* of the ES2015 preset
                         // to use. This reduces the output file size and improves
@@ -112,10 +103,10 @@ module.exports = {
                         'babel-plugin-transform-es2015-template-literals',
                         'babel-plugin-transform-es2015-literals',
                         //'babel-plugin-transform-es2015-function-name',
-                        'babel-plugin-transform-es2015-arrow-functions',
+                        //'babel-plugin-transform-es2015-arrow-functions',
                         'babel-plugin-transform-es2015-block-scoped-functions',
-                        'babel-plugin-transform-es2015-classes',
-                        'babel-plugin-transform-es2015-object-super',
+                        //'babel-plugin-transform-es2015-classes',
+                        //'babel-plugin-transform-es2015-object-super',
                         // 'babel-plugin-transform-es2015-shorthand-properties',
                         'babel-plugin-transform-es2015-duplicate-keys',
                         'babel-plugin-transform-es2015-computed-properties',
