@@ -163,11 +163,6 @@ export default class Tracer {
      *     outboundHTTPReq.headers.extend(headersCarrier);
      *     // ... send the httpReq
      *
-     * For FORMAT_BINARY, inject() will set the buffer field to an Array-like
-     * (Array, ArrayBuffer, or TypedBuffer) object containing the injected
-     * binary data.  Any valid Object can be used as long as the buffer field of
-     * the object can be set.
-     *
      * @param  {SpanContext} spanContext - the SpanContext to inject into the
      *         carrier object. As a convenience, a Span instance may be passed
      *         in instead (in which case its .context() is used for the
@@ -221,9 +216,6 @@ export default class Tracer {
      *     var headersCarrier = inboundHTTPReq.headers;
      *     var wireCtx = Tracer.extract(Tracer.FORMAT_HTTP_HEADERS, headersCarrier);
      *     var serverSpan = Tracer.startSpan('...', Tracer.childOf(wireCtx));
-     *
-     * For FORMAT_BINARY, `carrier` is expected to have a field named `buffer`
-     * that contains an Array-like object (Array, ArrayBuffer, or TypedBuffer).
      *
      * @param  {string} format - the format of the carrier.
      * @param  {any} carrier - the type of the carrier object is determined by
