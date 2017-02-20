@@ -29,6 +29,7 @@
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-plugin-check-es2015-constants": "^6.7.2",
+    "babel-plugin-transform-dead-code-elimination": "git://github.com/nicks/babel-plugin-transform-dead-code-elimination#logical",
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
     "babel-plugin-transform-es2015-block-scoped-functions": "^6.6.5",
     "babel-plugin-transform-es2015-block-scoping": "^6.7.1",
